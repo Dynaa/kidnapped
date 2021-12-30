@@ -18,6 +18,8 @@
 
 #include "helper_functions.h"
 
+using std::normal_distribution;
+
 using std::string;
 using std::vector;
 
@@ -25,12 +27,41 @@ void ParticleFilter::init(double x, double y, double theta, double std[]) {
   /**
    * TODO: Set the number of particles. Initialize all particles to 
    *   first position (based on estimates of x, y, theta and their uncertainties
-   *   from GPS) and all weights to 1. 
-   * TODO: Add random Gaussian noise to each particle.
+   *   from GPS) and all weights to 1. -> Ok
+   * TODO: Add random Gaussian noise to each particle. -> Ok
    * NOTE: Consult particle_filter.h for more information about this method 
    *   (and others in this file).
    */
-  num_particles = 0;  // TODO: Set the number of particles
+
+  if (is_initialized) {
+    return;
+  }
+
+  num_particles = 100;  // Set the number of particles
+
+
+  // Creates a normal (Gaussian) distribution for x, y, theta
+  normal_distribution<double> dist_x(x, std[0]);
+  normal_distribution<double> dist_y(y, std[1]);
+  normal_distribution<double> dist_theta(theta, std[2]);
+  std::default_random_engine gen;
+
+
+
+  for (int i = 0; i < num_particles; ++i) {
+
+    Particle p ; 
+    p.id = i ; 
+    p.x = dist_x(gen);
+    p.y = dist_y(gen);
+    p.theta = dist_theta(gen);
+    p.weight = 1. ; 
+    particles.push_back(p) ; 
+    weights.push_back(1.) ; 
+    
+  }
+
+  return ; 
 
 }
 

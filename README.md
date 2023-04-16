@@ -142,15 +142,15 @@ Now that observations have been transformed into the map’s coordinate space, t
 
 In this case, we have two Lidar measurements to the rock. We need to find which of these two measurements are corresponding to the rock. If we estimate that, any of the measurement is true, position of the car will be different based on the which measurement we picked.
 
-<img src="https://user-images.githubusercontent.com/677133/232335967-37da55f5-d721-4300-92cb-340a3fea13e1.png" width="350"
+<img src="https://user-images.githubusercontent.com/677133/232335967-37da55f5-d721-4300-92cb-340a3fea13e1.png" width="350">
 
 
 As we have multiple measurements to the landmark, we can use Nearest Neighbour technique to find the right one.
-<img src="https://user-images.githubusercontent.com/677133/232335990-333b8d4d-520f-490e-887d-c903440f1fed.png" width="350"
+<img src="https://user-images.githubusercontent.com/677133/232335990-333b8d4d-520f-490e-887d-c903440f1fed.png" width="350">
 
 In this method, we take the closest measurement as the right measurement.
 
-<img src="https://user-images.githubusercontent.com/677133/232336131-f2ea8e34-74dc-4480-8422-f08c54e9199b.png" width="350"
+<img src="https://user-images.githubusercontent.com/677133/232336131-f2ea8e34-74dc-4480-8422-f08c54e9199b.png" width="350">
 
 There are few pros and cons for this approach. Easy to understand and implement is the major pros of this algorithm. In terms cons, not robust to sensor noise, not robust to errors in position estimates etc.
 
@@ -160,7 +160,7 @@ Now we that we have done the measurement transformations and associations, we ha
 
 The Multivariate-Gaussian probability density has two dimensions, x and y. The mean of the Multivariate-Gaussian is the measurement’s associated landmark position and the Multivariate-Gaussian’s standard deviation is described by our initial uncertainty in the x and y ranges. The Multivariate-Gaussian is evaluated at the point of the transformed measurement’s position. The formula for the Multivariate-Gaussian can be seen below.
 
-<img src="https://user-images.githubusercontent.com/677133/232336372-0cc2c399-798d-43ea-9986-18492f0020fa.png" width="350"
+<img src="https://user-images.githubusercontent.com/677133/232336372-0cc2c399-798d-43ea-9986-18492f0020fa.png" width="350">
 
 
 
